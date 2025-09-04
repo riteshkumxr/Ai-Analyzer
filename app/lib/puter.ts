@@ -181,7 +181,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
             chat: (prompt: any, imageURL?: any, testMode?: any, options?: any) =>
                 getPuter()?.ai.chat(prompt, imageURL, testMode, options),
             feedback: (path: string, message: string) =>
-                getPuter()?.ai.chat([{ role: "user", content: [{ type: "file", puter_path: path }, { type: "text", text: message }] }], { model: "claude-sonnet-4" }),
+                getPuter()?.ai.chat([{ role: "user", content: [{ type: "file", puter_path: path }, { type: "text", text: message }] }], { model: "claude-3-7-sonnet" }),
             img2txt: (image: any, testMode?: boolean) => getPuter()?.ai.img2txt(image, testMode),
         },
         kv: {
