@@ -1,4 +1,11 @@
-const ScoreCircle = ({ score = 75 }: { score: number }) => {
+import React from "react";
+
+interface ScoreCircleProps {
+    score: number,
+    size?: number
+}
+
+const ScoreCircle: React.FC<ScoreCircleProps> = ({score = 75, size}) => {
     const radius = 40;
     const stroke = 8;
     const normalizedRadius = radius - stroke / 2;
@@ -23,11 +30,12 @@ const ScoreCircle = ({ score = 75 }: { score: number }) => {
                     strokeWidth={stroke}
                     fill="transparent"
                 />
-                {/* Partial circle with gradient */}
+
+                {/* Gradient progress circle */}
                 <defs>
                     <linearGradient id="grad" x1="1" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#FF97AD" />
-                        <stop offset="100%" stopColor="#5171FF" />
+                        <stop offset="0%" stopColor="#FF97AD"/>
+                        <stop offset="100%" stopColor="#5171FF"/>
                     </linearGradient>
                 </defs>
                 <circle
@@ -40,12 +48,15 @@ const ScoreCircle = ({ score = 75 }: { score: number }) => {
                     strokeDasharray={circumference}
                     strokeDashoffset={strokeDashoffset}
                     strokeLinecap="round"
+                    style={{transition: "stroke-dashoffset 1s ease-out"}}
                 />
             </svg>
 
-            {/* Score and issues */}
+            {/* Centered Score */}
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="font-semibold text-sm">{`${score}/100`}</span>
+        <span className="font-semibold text-sm md:text-base text-gray-800">
+          {score}/100
+        </span>
             </div>
         </div>
     );

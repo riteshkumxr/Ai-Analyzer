@@ -106,7 +106,7 @@ const CategoryContent = ({
     );
 };
 
-const Details = ({ feedback }: { feedback: Feedback }) => {
+const Details = ({feedback, section}: { feedback: Feedback, section?: string }) => {
     return (
         <div className="flex flex-col gap-4 w-full">
             <Accordion>
